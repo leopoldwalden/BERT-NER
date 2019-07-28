@@ -21,7 +21,7 @@ def select_singel_label(data):
 
     new_list = []
     for line in tqdm(icd_list,desc="Split ICD"):
-        print(line)
+        # print(line)
         line = re.sub(pattern, ";", line)
         line = line.split(";")
         new_list.append(line)
