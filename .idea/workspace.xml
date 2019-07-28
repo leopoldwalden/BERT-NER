@@ -2,13 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e6577e55-a2d1-49d5-a107-b463b33ca774" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/predict.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bert.py" beforeDir="false" afterPath="$PROJECT_DIR$/bert.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data_process/split_single_label.py" beforeDir="false" afterPath="$PROJECT_DIR$/data_process/split_single_label.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/run_ner.py" beforeDir="false" afterPath="$PROJECT_DIR$/run_ner.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/train_data/test.txt" beforeDir="false" afterPath="$PROJECT_DIR$/train_data/test.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/train_data/train.txt" beforeDir="false" afterPath="$PROJECT_DIR$/train_data/train.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data_process/process.py" beforeDir="false" afterPath="$PROJECT_DIR$/data_process/process.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shell.text" beforeDir="false" afterPath="$PROJECT_DIR$/shell.text" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -34,19 +30,28 @@
         <entry file="file://$PROJECT_DIR$/predict.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="312">
-              <caret line="13" lean-forward="true" selection-start-line="13" selection-end-line="13" />
+              <caret line="13" selection-start-line="13" selection-end-line="13" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/run_ner.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="735">
-              <caret line="483" column="57" selection-start-line="483" selection-start-column="47" selection-end-line="483" selection-end-column="57" />
+            <state relative-caret-position="-1310">
+              <caret line="637" lean-forward="true" selection-start-line="637" selection-end-line="637" />
               <folding>
                 <element signature="e#0#64#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/train_data/test.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-1214">
+              <caret line="24281" column="3" selection-start-line="24281" selection-start-column="3" selection-end-line="24281" selection-end-column="3" />
             </state>
           </provider>
         </entry>
@@ -63,8 +68,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/train_data/train.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="336">
-              <caret line="41" column="2" selection-start-line="41" selection-start-column="2" selection-end-line="41" selection-end-column="2" />
+            <state relative-caret-position="-1502">
+              <caret line="191355" column="11" lean-forward="true" selection-start-line="191355" selection-start-column="11" selection-end-line="191355" selection-end-column="11" />
             </state>
           </provider>
         </entry>
@@ -93,8 +98,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/data_process/split_single_label.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="408">
-              <caret line="23" selection-start-line="23" selection-end-line="24" />
+            <state relative-caret-position="1200">
+              <caret line="53" column="21" selection-start-line="53" selection-start-column="21" selection-end-line="53" selection-end-column="21" />
               <folding>
                 <element signature="e#0#19#0" expanded="true" />
               </folding>
@@ -102,21 +107,16 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/data_process/process.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="332">
-              <caret line="52" column="23" selection-start-line="52" selection-start-column="23" selection-end-line="52" selection-end-column="23" />
+            <state relative-caret-position="45">
+              <caret line="53" column="20" selection-start-line="53" selection-start-column="20" selection-end-line="53" selection-end-column="20" />
               <folding>
-                <element signature="e#0#36#0" expanded="true" />
+                <element signature="e#0#23#0" expanded="true" />
               </folding>
             </state>
           </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test_data/train.txt">
-          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
     </leaf>
@@ -130,14 +130,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>process</find>
-      <find>inf</find>
-      <find>label</find>
-      <find>label_list</find>
-      <find>predict</find>
-      <find>input_ids</find>
-      <find>eval_features</find>
-      <find>set_type</find>
       <find>InputExample</find>
       <find>_create_examples</find>
       <find>get_test_examples</find>
@@ -160,6 +152,14 @@
       <find>output_config_file</find>
       <find>train_dataloader</find>
       <find>train_data</find>
+      <find>valid</find>
+      <find>get_valid_examples</find>
+      <find>get_dev_examples</find>
+      <find>args.data_dir</find>
+      <find>args.num_train_epochs</find>
+      <find>num_train_epochs</find>
+      <find>eval_batch_size</find>
+      <find>train</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -172,15 +172,15 @@
         <option value="$PROJECT_DIR$/data_process/__init__.py" />
         <option value="$PROJECT_DIR$/test_data/train.txt" />
         <option value="$PROJECT_DIR$/data_process/ner_label.py" />
-        <option value="$PROJECT_DIR$/train_data/test.txt" />
-        <option value="$PROJECT_DIR$/train_data/train.txt" />
         <option value="$PROJECT_DIR$/train_data/validation.txt" />
-        <option value="$PROJECT_DIR$/data_process/process.py" />
-        <option value="$PROJECT_DIR$/data_process/split_single_label.py" />
         <option value="$PROJECT_DIR$/predict.py" />
         <option value="$PROJECT_DIR$/bert.py" />
+        <option value="$PROJECT_DIR$/data_process/split_single_label.py" />
+        <option value="$PROJECT_DIR$/train_data/test.txt" />
+        <option value="$PROJECT_DIR$/train_data/train.txt" />
         <option value="$PROJECT_DIR$/run_ner.py" />
         <option value="$PROJECT_DIR$/run_ner.py" />
+        <option value="$PROJECT_DIR$/data_process/process.py" />
       </list>
     </option>
   </component>
@@ -259,7 +259,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.predict">
+  <component name="RunManager" selected="Python.process">
     <configuration name="ner_label" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="BERT_NER" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -344,10 +344,32 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="split_single_label" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="BERT_NER" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/data_process" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/data_process/split_single_label.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.predict" />
         <item itemvalue="Python.process" />
+        <item itemvalue="Python.split_single_label" />
+        <item itemvalue="Python.predict" />
         <item itemvalue="Python.run_ner" />
         <item itemvalue="Python.ner_label" />
       </list>
@@ -375,20 +397,20 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="67" y="25" width="1853" height="1055" extended-state="6" />
+    <frame x="67" y="25" width="1853" height="1055" extended-state="7" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24972677" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24972677" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32963374" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.105438404" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.7580466" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Version Control" order="7" />
-      <window_info anchor="bottom" id="Terminal" order="8" weight="0.034406215" />
+      <window_info anchor="bottom" id="Terminal" order="8" weight="0.34295228" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
       <window_info anchor="bottom" id="Python Console" order="10" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -430,13 +452,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/train_data/test.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="12" selection-start-column="12" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/test_data/valid.txt">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -465,13 +480,6 @@
     <entry file="file://$PROJECT_DIR$/test_data/valid.txt">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/train_data/train.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="336">
-          <caret line="41" column="2" selection-start-line="41" selection-start-column="2" selection-end-line="41" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/data_process/ner_label.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-120">
@@ -483,26 +491,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="264">
           <caret line="11" selection-start-line="11" selection-end-line="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data_process/process.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="332">
-          <caret line="52" column="23" selection-start-line="52" selection-start-column="23" selection-end-line="52" selection-end-column="23" />
-          <folding>
-            <element signature="e#0#36#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data_process/split_single_label.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="23" selection-start-line="23" selection-end-line="24" />
-          <folding>
-            <element signature="e#0#19#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -529,16 +517,50 @@
     <entry file="file://$PROJECT_DIR$/predict.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="312">
-          <caret line="13" lean-forward="true" selection-start-line="13" selection-end-line="13" />
+          <caret line="13" selection-start-line="13" selection-end-line="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data_process/split_single_label.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1200">
+          <caret line="53" column="21" selection-start-line="53" selection-start-column="21" selection-end-line="53" selection-end-column="21" />
+          <folding>
+            <element signature="e#0#19#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/train_data/test.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1214">
+          <caret line="24281" column="3" selection-start-line="24281" selection-start-column="3" selection-end-line="24281" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/train_data/train.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1502">
+          <caret line="191355" column="11" lean-forward="true" selection-start-line="191355" selection-start-column="11" selection-end-line="191355" selection-end-column="11" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/run_ner.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="735">
-          <caret line="483" column="57" selection-start-line="483" selection-start-column="47" selection-end-line="483" selection-end-column="57" />
+        <state relative-caret-position="-1310">
+          <caret line="637" lean-forward="true" selection-start-line="637" selection-end-line="637" />
           <folding>
             <element signature="e#0#64#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data_process/process.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="53" column="20" selection-start-line="53" selection-start-column="20" selection-end-line="53" selection-end-column="20" />
+          <folding>
+            <element signature="e#0#23#0" expanded="true" />
           </folding>
         </state>
       </provider>

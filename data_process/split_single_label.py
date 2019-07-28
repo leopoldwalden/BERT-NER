@@ -50,12 +50,12 @@ def select_singel_label(data):
     #data.to_excel("your_path")
 
 # set your read path
-root = "~/PycharmProjects/BERT_NER"
-path = "/data_process/regex.xlsx"
-data = pd.read_excel(root + path)
+# root = "~/PycharmProjects/BERT_NER"
+# path = "/data_process/regex.xlsx"
+# data = pd.read_excel(root + path)
 
-output_list = select_singel_label(data)
-print(len(output_list))
+# output_list = select_singel_label(data)
+# print(len(output_list))
 
 
 

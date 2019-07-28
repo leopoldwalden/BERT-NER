@@ -51,7 +51,9 @@ if __name__ == '__main__':
     data = select_singel_label(data)
     shuffle(data)
     # print(len(data))
+
     data = data[:120]
+
     # df = pd.read_csv(path)
 
     scale = (3, 3, 3)
