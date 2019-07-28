@@ -4,6 +4,7 @@ import pandas as pd
 import pysnooper
 import tqdm
 from tqdm import tqdm
+from random import shuffle
 from tqdm._tqdm import trange
 
 # @pysnooper.snoop()
@@ -47,9 +48,12 @@ if __name__ == '__main__':
 
     print(data)
     data = select_singel_label(data)
+    shuffle(data)
+    print(len(data))
+    data = data[:50000]
     # df = pd.read_csv(path)
 
-    scale = (6, 1, 1)
+    scale = (8, 1, 1)
     train, test, validation = data_devide(data,scale)
 
     # print(train.head())
@@ -61,9 +65,9 @@ if __name__ == '__main__':
     test_data = process(test, 'test')
     validation_data = process(validation, 'valid')
     #
-    print(len(train_data))
-    print(len(test_data))
-    print(len(validation_data))
+    # print(len(train_data))
+    # print(len(test_data))
+    # print(len(validation_data))
 
 
     # data = process(data, name = "dump")
