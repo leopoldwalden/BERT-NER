@@ -41,9 +41,10 @@ class Ner:
     def load_model(self, model_dir: str, model_config: str = "model_config.json"):
         model_config = os.path.join(model_dir,model_config)
         model_config = json.load(open(model_config))
-        output_config_file = os.path.join(model_dir, CONFIG_NAME)
+        # output_config_file = os.path.join(model_dir, CONFIG_NAME)
         output_model_file = os.path.join(model_dir, WEIGHTS_NAME)
-        config = BertConfig(output_config_file)
+        config = BertConfig()
+        # config = BertConfig(output_config_file)
         model = BertNer(config, num_labels=model_config["num_labels"])
         model.load_state_dict(torch.load(output_model_file))
         tokenizer = BertTokenizer.from_pretrained(model_config["bert_model"],do_lower_case=False)

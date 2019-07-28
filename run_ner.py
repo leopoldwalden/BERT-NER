@@ -503,7 +503,7 @@ def main():
                     loss.backward()
 
                 tr_loss += loss.item()
-                # logger.info("train loss {} at epoch {}",format(str(tr_loss), str(_)))
+                logger.info("train loss {} at epoch {}".format(str(tr_loss), str(_)))
                 nb_tr_examples += input_ids.size(0)
                 nb_tr_steps += 1
                 if (step + 1) % args.gradient_accumulation_steps == 0:
@@ -522,6 +522,13 @@ def main():
             output_model_file = os.path.join(args.output_dir, WEIGHTS_NAME)
             torch.save(model_to_save.state_dict(), output_model_file)
             output_config_file = os.path.join(args.output_dir, CONFIG_NAME)
+            with open(output_config_file, 'w') as f:
+                f.write(model_to_save.config.to_json_string())
+            label_map = {i: label for i, label in enumerate(label_list, 1)}
+            model_config = {"bert_model": args.bert_model, "do_lower": args.do_lower_case,
+                            "max_seq_length": args.max_seq_length, "num_labels": len(label_list) + 1,
+                            "label_map": label_map}
+            json.dump(model_config, open(os.path.join(args.output_dir, "model_config.json"), "w"))
 
         # Save a trained model and the associated configuration
         model_to_save = model.module if hasattr(model, 'module') else model  # Only save the model it-self
