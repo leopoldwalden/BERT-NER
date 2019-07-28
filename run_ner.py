@@ -314,6 +314,10 @@ def main():
                         default=8,
                         type=int,
                         help="Total batch size for eval.")
+    parser.add_argument("--valid_batch_size",
+                        default=8,
+                        type=int,
+                        help="Total batch size for eval.")
     parser.add_argument("--learning_rate",
                         default=5e-5,
                         type=float,
@@ -413,7 +417,10 @@ def main():
             len(train_examples) / args.train_batch_size / args.gradient_accumulation_steps) * args.num_train_epochs
         if args.local_rank != -1:
             num_train_optimization_steps = num_train_optimization_steps // torch.distributed.get_world_size()
-    
+
+    # Prevent Zero Division Error
+    num_train_optimization_steps = num_train_optimization_steps or 1
+
     # Prepare model
     cache_dir = args.cache_dir if args.cache_dir else os.path.join(str(PYTORCH_PRETRAINED_BERT_CACHE), 'distributed_{}'.format(args.local_rank))
     model = Ner.from_pretrained(args.bert_model,
@@ -503,7 +510,7 @@ def main():
                     loss.backward()
 
                 tr_loss += loss.item()
-                logger.info("train loss {} at epoch {}".format(str(tr_loss), str(_)))
+                logger.info("Train loss {} at Epoch {}".format(str(tr_loss), str(_)))
                 nb_tr_examples += input_ids.size(0)
                 nb_tr_steps += 1
                 if (step + 1) % args.gradient_accumulation_steps == 0:
@@ -517,6 +524,85 @@ def main():
                     optimizer.step()
                     optimizer.zero_grad()
                     global_step += 1
+
+            # add validation
+            if True:
+                valid_examples = processor.get_dev_examples(args.data_dir)
+                valid_features = convert_examples_to_features(valid_examples, label_list, args.max_seq_length, tokenizer)
+                logger.info("***** Running evaluation *****")
+                logger.info("  Num examples = %d", len(valid_features))
+                logger.info("  Batch size = %d", args.eval_batch_size)
+                all_input_ids = torch.tensor([f.input_ids for f in valid_features], dtype=torch.long)
+                all_input_mask = torch.tensor([f.input_mask for f in valid_features], dtype=torch.long)
+                all_segment_ids = torch.tensor([f.segment_ids for f in valid_features], dtype=torch.long)
+                all_label_ids = torch.tensor([f.label_id for f in valid_features], dtype=torch.long)
+                all_valid_ids = torch.tensor([f.valid_ids for f in valid_features], dtype=torch.long)
+                all_lmask_ids = torch.tensor([f.label_mask for f in valid_features], dtype=torch.long)
+                valid_data = TensorDataset(all_input_ids, all_input_mask, all_segment_ids, all_label_ids, all_valid_ids,
+                                          all_lmask_ids)
+                # Run prediction for full data
+                valid_sampler = SequentialSampler(valid_data)
+                valid_dataloader = DataLoader(valid_data, sampler=valid_sampler, batch_size=args.valid_batch_size)
+
+                model.train()
+                for _ in trange(1, desc="Epoch"):
+                    tr_loss = 0
+                    nb_tr_examples, nb_tr_steps = 0, 0
+                    for step, batch in enumerate(tqdm(valid_dataloader, desc="Iteration")):
+                        batch = tuple(t.to(device) for t in batch)
+                        input_ids, input_mask, segment_ids, label_ids, valid_ids, l_mask = batch
+                        loss = model(input_ids, segment_ids, input_mask, label_ids, valid_ids, l_mask)
+                        if n_gpu > 1:
+                            loss = loss.mean()  # mean() to average on multi-gpu.
+                        if args.gradient_accumulation_steps > 1:
+                            loss = loss / args.gradient_accumulation_steps
+
+                        tr_loss += loss.item()
+                        logger.info("Valid loss {} at Epoch {}".format(str(tr_loss), str(_)))
+
+                model.eval()
+                valid_loss, valid_accuracy = 0, 0
+                nb_valid_steps, nb_valid_examples = 0, 0
+                y_true = []
+                y_pred = []
+                label_map = {i: label for i, label in enumerate(label_list, 1)}
+                for input_ids, input_mask, segment_ids, label_ids, valid_ids, l_mask in tqdm(valid_dataloader,
+                                                                                             desc="Validation"):
+                    input_ids = input_ids.to(device)
+                    input_mask = input_mask.to(device)
+                    segment_ids = segment_ids.to(device)
+                    valid_ids = valid_ids.to(device)
+                    label_ids = label_ids.to(device)
+                    l_mask = l_mask.to(device)
+
+                    with torch.no_grad():
+                        logits = model(input_ids, segment_ids, input_mask, valid_ids=valid_ids, attention_mask_label=l_mask)
+
+                    logits = torch.argmax(F.log_softmax(logits, dim=2), dim=2)
+                    logits = logits.detach().cpu().numpy()
+                    label_ids = label_ids.to('cpu').numpy()
+                    input_mask = input_mask.to('cpu').numpy()
+
+                    for i, label in enumerate(label_ids):
+                        temp_1 = []
+                        temp_2 = []
+
+                        for j, m in enumerate(label):
+                            if j == 0:
+                                continue
+                            elif label_ids[i][j] == 11:
+                                y_true.append(temp_1)
+                                y_pred.append(temp_2)
+                                break
+                            else:
+                                temp_1.append(label_map[label_ids[i][j]])
+                                temp_2.append(label_map[logits[i][j]])
+
+                report = classification_report(y_true, y_pred, digits=4)
+                logger.info("\n%s", report)
+                # output_eval_file = os.path.join(args.output_dir, "eval_results.txt")
+                logger.info("***** Valid Results *****")
+                logger.info("\n%s", report)
 
             model_to_save = model.module if hasattr(model, 'module') else model  # Only save the model it-self
             output_model_file = os.path.join(args.output_dir, WEIGHTS_NAME)
