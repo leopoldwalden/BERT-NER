@@ -1,5 +1,5 @@
-from data_process.ner_label import *
-from data_process.split_single_label import select_singel_label
+from ner_label import *
+from split_single_label import select_singel_label
 import pandas as pd
 import pysnooper
 import tqdm
@@ -21,16 +21,17 @@ def data_devide(df,scale):
     range1, range2 = devide(length, scale)
     print(range1,range2)
     train = df[0:range1]
-    print(len(train))
+    print("length train_data:", len(train))
     test = df[range1:range2]
-    print(len(test))
+    print("length test_data:", len(test))
     validation = df[range2:length]
-    print(len(validation))
+    print("length valid_data:", len(validation))
     return train, test, validation
 
 def process(data_list, name):
-    name = './' + name + '.txt'
+    name = '../train_data/' + name + '.txt'
     with open(name, 'w+') as f:
+        print("-DOCSTART- O\n",file = f)
         # print(data_list.__class__)
         for line in tqdm(data_list):
             if tag(line) != []:
@@ -41,19 +42,19 @@ def process(data_list, name):
 
 
 if __name__ == '__main__':
-    root = "~/PycharmProjects/BERT_NER"
+    root = "~/fjl/src/BERT-NER"
     path = "/data_process/regex.xlsx"
 
     data = pd.read_excel(root + path)
 
-    print(data)
+    # print(data)
     data = select_singel_label(data)
     shuffle(data)
-    print(len(data))
-    data = data[:50000]
+    # print(len(data))
+    data = data[:1200]
     # df = pd.read_csv(path)
 
-    scale = (8, 1, 1)
+    scale = (3, 3, 3)
     train, test, validation = data_devide(data,scale)
 
     # print(train.head())
