@@ -1,1 +1,10 @@
+src_root = /home/lkl/Lab/
+src_root = /home/wyykak/fjl/src/
+src_root = /home/jilei/PycharmProjects/
+
+model_root = /home/lkl/Lab/model/Bert_Pytorch_Model/
+model_root = /home/wyykak/fjl/bert_model/Bert_Pytorch_Model/
+model_root = /home/jilei/Bert_Model/Bert_Pytorch_Model/
+
+
 sudo python3 run_ner.py --data_dir=/home/lkl/Lab/BERT-NER/train_data/ --bert_model=/home/lkl/Lab/model/Bert_Pytorch_Model/ --task_name=ner --output_dir=/home/lkl/Lab/BERT-NER/output/ --max_seq_length=128 --do_train --num_train_epochs 5 --do_eval --warmup_proportion=0.4
